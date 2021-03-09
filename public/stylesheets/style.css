@@ -4,6 +4,10 @@ body {
   color: #3c403d;
 }
 
+.container-fluid {
+  padding: 0;
+}
+
 .nav-bg {
   text-transform: lowercase;
   font-size: 1.2em;
@@ -11,12 +15,12 @@ body {
 
 .nav-bg a {
   color: #3c403d;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .nav-bg a:hover {
   opacity: 0.75;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .navbar-brand {
@@ -24,7 +28,7 @@ body {
 }
 
 .post-contatiner {
-  max-width: 500px;
+  max-width: 600px;
   margin: auto;
 }
 
@@ -33,6 +37,53 @@ body {
   background: #DADED4;
   padding: 30px;
   border-radius: 5px;
+}
+
+.hero-div {
+  width: 100%;
+  margin: auto;
+  background: #DADED4;
+  color: #39603D;
+  min-height: 250px;
+  display: flex;
+  margin-bottom: 30px;
+  justify-content: center;
+  align-items: center;
+  text-transform: lowercase;
+
+}
+
+.hero-title {
+  font-size: 52px;
+}
+
+.hero-subtitle {
+  font-size: 28px;
+}
+
+.ch-form-wrapper {
+  margin: auto;
+  /* background: #DADED4; */
+  max-width: 600px;
+  border-radius: 5px;
+}
+
+.ch-form {
+  padding: 30px;
+}
+
+.ch-btn {
+  background: #39603D;
+  margin: auto;
+  color: #fff;
+  display: block;
+  transition: all 0.2s ease-in-out;
+}
+
+.ch-btn:hover{
+  color: #fff;
+  opacity: 0.75;
+  transition: all 0.2s ease-in-out;
 }
 
 /* 

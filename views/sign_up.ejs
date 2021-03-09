@@ -1,0 +1,49 @@
+<%- include('header') -%>
+<div class="hero-div">
+  <h1 class="text-center hero-title">Create an Account</h1>
+</div>
+
+<div class="container-fluid ch-form-wrapper">
+  <form method="POST" class="ch-form">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First Name</label>
+      <input type="text" class="form-control" id="firstName" name="firstName"
+      required=true value=<%-(undefined===locals.firstName ? '' :
+      user.firstName)%>>
+    </div>
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Last Name</label>
+      <input type="text" class="form-control" id="lastName" name="lastName"
+      required=true value=<%-(undefined===locals.lastName ? '' :
+      user.lastName)%>>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="text" class="form-control" id="email" name="email"
+      required=true value=<%-(undefined===locals.email ? '' : user.email)%>>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        required="true"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Confirm Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="confirmPassword"
+        name="confirmPassword"
+        required="true"
+      />
+    </div>
+    <button class="btn ch-btn">Submit</button>
+  </form>
+</div>
+
+<%- include('footer') -%>
