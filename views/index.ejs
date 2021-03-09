@@ -1,11 +1,36 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- include('header'); -%>
+<div class="hero text-center m-5">
+  <h1>Welcome to the Clubhouse</h1>
+  <h4>An exclusive community</h4>
+</div>
+
+<div class="post-contatiner">
+  <div class="post">
+    <h2 class="post-title">Title</h2>
+    <p class="post-date">1/1/2020</p>
+    <p class="post-content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+      condimentum nunc ut ipsum bibendum mollis. Ut facilisis velit eu dolor
+      ornare, in ultrices lectus efficitur. Donec tincidunt vitae enim sed
+      tincidunt. Nunc condimentum et nisi at lacinia. Sed vitae ex eu metus
+      auctor consequat ac ut elit. Aliquam non egestas dolor. Lorem ipsum dolor
+      sit amet, consectetur adipiscing elit. Ut eu orci in arcu malesuada
+      laoreet vel non risus.
+    </p>
+  </div>
+
+  <div class="post">
+    <h2 class="post-title">Title</h2>
+    <p class="post-date">1/1/2020</p>
+    <p class="post-content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+      condimentum nunc ut ipsum bibendum mollis. Ut facilisis velit eu dolor
+      ornare, in ultrices lectus efficitur. Donec tincidunt vitae enim sed
+      tincidunt. Nunc condimentum et nisi at lacinia. Sed vitae ex eu metus
+      auctor consequat ac ut elit. Aliquam non egestas dolor. Lorem ipsum dolor
+      sit amet, consectetur adipiscing elit. Ut eu orci in arcu malesuada
+      laoreet vel non risus.
+    </p>
+  </div>
+</div>
+<%- include('footer'); -%>

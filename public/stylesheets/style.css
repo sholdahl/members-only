@@ -1,8 +1,44 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px "Cabin", sans-serif;
+  background: #fff;
+  color: #3c403d;
 }
 
-a {
-  color: #00B7FF;
+.nav-bg {
+  text-transform: lowercase;
+  font-size: 1.2em;
 }
+
+.nav-bg a {
+  color: #3c403d;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-bg a:hover {
+  opacity: 0.75;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-brand {
+  font-size: 1.4em;
+}
+
+.post-contatiner {
+  max-width: 500px;
+  margin: auto;
+}
+
+.post {
+  margin-bottom: 40px;
+  background: #DADED4;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+/* 
+background: #E8CEBF
+primary accent: #226150
+secondary accent: #DDAF94
+text: #4F4846
+white: #FDF8F5
+*/
