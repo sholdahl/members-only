@@ -147,3 +147,55 @@ exports.user_login_post = [
     failureFlash: true,
   }),
 ];
+
+// GET requst for user log out
+exports.user_logout_get = (req, res) => {
+  req.logout();
+  res.redirect("/");
+};
+
+// GET request for member application
+exports.member_application_get = (req, res, next) => {
+  res.render("member_application");
+};
+
+// POST request for member application
+exports.member_application_post = [
+  body("secret-code")
+    .trim()
+    .isLength({ min: 1, max: 100 })
+    .escape()
+    .withMessage("Must provide a secret code"),
+  (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      // There are errors.
+      res.render("member_application", {
+        errors: errors.array(),
+      });
+    } else {
+      if (req.body['secret-code'] === "Open Sesame") {
+        User.findByIdAndUpdate(req.user._id, {
+          membershipStatus: "member",
+        }).exec((err, foundUser) => {
+          if (err) {
+            return next(err);
+          } else {
+            req.flash(
+              "info",
+              "Your request to join our community has been approved. You are now a full member who can post and view the name of other posters."
+            );
+            res.redirect("/");
+          }
+        });
+      } else {
+        req.flash(
+          "error",
+          "Incorrect Password"
+        );
+        res.render("member_application")
+      }
+    }
+  },
+];

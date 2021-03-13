@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0", user-scalable=false;">
     <title>Secret Clubhouse</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -25,35 +25,32 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
+                    <% if(locals.user) {%>
+                        <% if(locals.user.membershipStatus == "member") {%>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/post">Create a Post</a>
+                            </li>
+                        <% } else { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user/member-application">Become a Member</a>
+                            </li>
+                    <% }} %>
                     <% if(!locals.user) {%>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sign-up">Sign Up</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/log-in">Log In</a>
-                    </li>
-                    <% } %>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/post">Create a Post</a>
-                    </li>
-                    <% if(locals.user) {%>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/members">Become a Member</a>
-                    </li>
-                    <% } %>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user/settings">Account Settings</a>
-                    </li>
-                    <% if(locals.user) {%>
-                    <li class="nav-item user-greeting ms-auto">
-                        <span class="navbar-text">Hello, <%=locals.user.firstName%></span>
-                    </li>
+                        <li class="nav-item nav-link-right">
+                            <a class="nav-link" href="/sign-up">Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/log-in">Log In</a>
+                        </li>
+                    <% } else {%>
+                        <li class="nav-item user-greeting nav-link-right">
+                            <span class="navbar-text">Hello, <%=locals.user.firstName%></span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/log-out">Log Out</a>
+                        </li>
                     <% } %>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container-fluid">
-</body>
-
-</html>

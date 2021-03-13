@@ -5,7 +5,7 @@
 
 <div class="container-fluid ch-form-wrapper">
     <% if (messages.error) { %>
-        <%= messages.error %>
+       <p class="error message"> <%= messages.error %> </p>
       <% } %>
   <form method="POST" class="ch-form">
     <div class="mb-3">
@@ -25,16 +25,15 @@
     </div>
     <button class="btn ch-btn">Log In</button>
   </form>
-
-  <%if(undefined===locals.errors) {%> <%} else {%>
+</div>
+<%if(undefined===locals.errors) {%> <%} else {%>
   <h5 class="mt-3">Errors</h5>
   <ul>
     <% errors.forEach(error => { %>
     <li><%-error.msg%></li>
     <%});%>
   </ul>
-  <%}%> <%- include('footer'); -%>
-</div>
+  <%}%>
 
 <script
   src="/javascripts/passwordValidator.js"

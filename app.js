@@ -89,7 +89,7 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   
-  // Handle 404
+  // Handle 404s
   if(err.status === 404) {
     res.render("404")
   }
