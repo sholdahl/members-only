@@ -7,8 +7,7 @@ let UserSchema = new Schema({
   lastName: { type: String, required: true, maxLength: 100 },
   email: { type: String, require: true, maxLength: 100},
   membershipStatus: {type: String, required: true, maxLength: 100},
-  hash: {type: String},
-  salt: {type: String}
+  password: {type: String},
 });
 
 module.exports = mongoose.model("User", UserSchema);

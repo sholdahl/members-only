@@ -8,6 +8,7 @@
     "serverstart": "DEBUG=express-locallibrary-tutorial:* npm run devstart"
   },
   "dependencies": {
+    "async": "^3.2.0",
     "bcryptjs": "^2.4.3",
     "bootstrap-icons": "^1.4.0",
     "cookie-parser": "~1.4.4",
@@ -15,10 +16,14 @@
     "dotenv": "^8.2.0",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.1",
     "express-validator": "^6.10.0",
     "http-errors": "~1.6.3",
     "mongoose": "^5.11.19",
     "morgan": "~1.9.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
   }
 }

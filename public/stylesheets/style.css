@@ -27,6 +27,14 @@ body {
   font-size: 1.4em;
 }
 
+.navbar-nav {
+  width: 100%;
+}
+
+.user-greeting {
+  display: flex;
+}
+
 .post-contatiner {
   max-width: 600px;
   margin: auto;
@@ -84,6 +92,11 @@ body {
   color: #fff;
   opacity: 0.75;
   transition: all 0.2s ease-in-out;
+}
+
+.btn-link {
+  text-decoration: none;
+  color: #3c403d;
 }
 
 /* 

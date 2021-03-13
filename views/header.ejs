@@ -25,21 +25,30 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
+                    <% if(!locals.user) {%>
                     <li class="nav-item">
                         <a class="nav-link" href="/sign-up">Sign Up</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/sign-in">Sign In</a>
+                        <a class="nav-link" href="/log-in">Log In</a>
                     </li>
+                    <% } %>
                     <li class="nav-item">
                         <a class="nav-link" href="/post">Create a Post</a>
                     </li>
+                    <% if(locals.user) {%>
                     <li class="nav-item">
                         <a class="nav-link" href="/members">Become a Member</a>
                     </li>
+                    <% } %>
                     <li class="nav-item">
-                        <a class="nav-link" href="/account">Account Settings</a>
+                        <a class="nav-link" href="/user/settings">Account Settings</a>
                     </li>
+                    <% if(locals.user) {%>
+                    <li class="nav-item user-greeting ms-auto">
+                        <span class="navbar-text">Hello, <%=locals.user.firstName%></span>
+                    </li>
+                    <% } %>
                 </ul>
             </div>
         </div>
