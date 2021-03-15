@@ -8,34 +8,28 @@
 
 <div class="post-contatiner">
   <% if (messages.info) { %>
-    <p class="info message"> <%= messages.info %> </p>
-   <% } %>
-  <div class="post">
-    <h2 class="post-title">Title</h2>
-    <p class="post-date">1/1/2020</p>
-    <p class="post-content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-      condimentum nunc ut ipsum bibendum mollis. Ut facilisis velit eu dolor
-      ornare, in ultrices lectus efficitur. Donec tincidunt vitae enim sed
-      tincidunt. Nunc condimentum et nisi at lacinia. Sed vitae ex eu metus
-      auctor consequat ac ut elit. Aliquam non egestas dolor. Lorem ipsum dolor
-      sit amet, consectetur adipiscing elit. Ut eu orci in arcu malesuada
-      laoreet vel non risus.
-    </p>
-  </div>
+  <p class="info message"><%= messages.info %></p>
+  <% } %> <% postedMessages.forEach(post => { %>
 
   <div class="post">
-    <h2 class="post-title">Title</h2>
-    <p class="post-date">1/1/2020</p>
-    <p class="post-content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-      condimentum nunc ut ipsum bibendum mollis. Ut facilisis velit eu dolor
-      ornare, in ultrices lectus efficitur. Donec tincidunt vitae enim sed
-      tincidunt. Nunc condimentum et nisi at lacinia. Sed vitae ex eu metus
-      auctor consequat ac ut elit. Aliquam non egestas dolor. Lorem ipsum dolor
-      sit amet, consectetur adipiscing elit. Ut eu orci in arcu malesuada
-      laoreet vel non risus.
+    <h2 class="post-title"><%= post.title %></h2>
+    <p class="post-date">
+      <%= post.timePostedFormatted %><% if (isMember) {%>
+      <span class="post-author">
+        • <%= post.user.firstName %> <%= post.user.lastName %></span
+      >
+      <% } %>
     </p>
+
+    <p class="post-content"><%= post.message %></p>
+    <% if (locals.user) {%> <% if (String(user._id) === String(post.user._id)) {%>
+
+    <a class="btn-link" href="/">
+      <button class="btn ch-btn delete-btn">Delete Post</button>
+    </a>
+    <% }} %>
   </div>
+
+  <% }); %>
 </div>
 <%- include('footer'); -%>

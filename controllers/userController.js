@@ -128,7 +128,7 @@ exports.user_login_post = [
 
   (req, res, next) => {
     const errors = validationResult(req);
-
+  
     if (!errors.isEmpty()) {
       // There are errors.
       res.render("log_in", {
@@ -175,7 +175,7 @@ exports.member_application_post = [
         errors: errors.array(),
       });
     } else {
-      if (req.body['secret-code'] === "Open Sesame") {
+      if (req.body["secret-code"] === "Open Sesame") {
         User.findByIdAndUpdate(req.user._id, {
           membershipStatus: "member",
         }).exec((err, foundUser) => {
@@ -190,11 +190,8 @@ exports.member_application_post = [
           }
         });
       } else {
-        req.flash(
-          "error",
-          "Incorrect Password"
-        );
-        res.render("member_application")
+        req.flash("error", "Incorrect Password");
+        res.render("member_application");
       }
     }
   },

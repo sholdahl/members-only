@@ -105,6 +105,10 @@ body {
   transition: all 0.2s ease-in-out;
 }
 
+.delete-btn{
+  background: indianred;
+}
+
 .btn-link {
   text-decoration: none;
   color: #3c403d;

@@ -64,8 +64,9 @@ app.use((req, res, next) => {
       lastName: req.user.lastName,
       email: req.user.email,
       membershipStatus: req.user.membershipStatus,
+      _id: req.user._id
     };
-    console.log("User Info: " + req.user)
+    console.log("User Info: " + req.user);
   }
   next();
 });
@@ -88,10 +89,10 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  
+
   // Handle 404s
-  if(err.status === 404) {
-    res.render("404")
+  if (err.status === 404) {
+    res.render("404");
   }
 
   res.render("error");

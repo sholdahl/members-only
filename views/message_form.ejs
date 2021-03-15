@@ -1,9 +1,7 @@
 <%- include('header') -%>
 <div class="hero-div">
-  <h1 class="text-center hero-title">Log In</h1>
+  <h1 class="text-center hero-title">Post a Message</h1>
 </div>
-
-<% console.log(locals) %>
 
 <div class="container-fluid ch-form-wrapper">
     <% if (messages.error) { %>
@@ -11,21 +9,15 @@
       <% } %>
   <form method="POST" class="ch-form">
     <div class="mb-3">
-      <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control" id="email" name="email"
-      required=true value=<%-(undefined===locals.email ? '' : locals.email)%>>
+      <label for="title" class="form-label">Message Title</label>
+      <input type="text" class="form-control" id="title" name="title"
+      required=true value=<%-(undefined===locals.message ? '' : message.title)%>>
     </div>
     <div class="mb-3">
-      <label for="password" class="form-label">Password</label>
-      <input
-        type="password"
-        class="form-control"
-        id="password"
-        name="password"
-        required="true"
-      />
+      <label for="message" class="form-label">Message</label>
+      <textarea class="form-control" name="message" id="message" cols="30" rows="10"><%-(undefined===locals.message ? '' : message.message)%></textarea>
     </div>
-    <button class="btn ch-btn">Log In</button>
+    <button class="btn ch-btn">Submit</button>
   </form>
 </div>
 <%if(undefined===locals.errors) {%> <%} else {%>
