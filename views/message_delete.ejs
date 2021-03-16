@@ -1,0 +1,52 @@
+<%- include('header') -%>
+<div class="hero-div">
+  <div>
+    <h1 class="text-center hero-title">Delete Message</h1>
+    <h3 class="text-center hero-subtitle">
+      Are you sure you want to delete the below message?
+    </h3>
+  </div>
+</div>
+
+<div class="container-fluid ch-form-wrapper">
+  <% if (messages.error) { %>
+  <p class="error message"><%= messages.error %></p>
+  <% } %>
+
+  <form method="POST" class="ch-form">
+    <div class="post">
+      <h2 class="post-title"><%= foundMessage.title %></h2>
+      <p class="post-date">
+        <%= foundMessage.timePostedFormatted %><% if (locals.user.membershipStatus === "member") {%>
+        <span class="post-author">
+          • <%= foundMessage.user.firstName %> <%= foundMessage.user.lastName
+          %></span
+        >
+        <% } %>
+      </p>
+      <input type="hidden" name="id" value="<%= foundMessage._id %>" />
+      <p class="post-content"><%= foundMessage.message %></p>
+      <% if (locals.user) {%> <% if (String(user._id) ===
+      String(foundMessage.user._id)) {%>
+
+      <button type="submit" class="btn ch-btn delete-btn">Delete Post</button>
+      <% }} %>
+    </div>
+  </form>
+</div>
+
+<%if(undefined===locals.errors) {%> <%} else {%>
+<h5 class="mt-3">Errors</h5>
+<ul>
+  <% errors.forEach(error => { %>
+  <li><%-error.msg%></li>
+  <%});%>
+</ul>
+<%}%>
+
+<script
+  src="/javascripts/passwordValidator.js"
+  crossorigin="anonymous"
+></script>
+
+<%- include('footer') -%>

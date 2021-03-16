@@ -23,8 +23,10 @@ exports.index = (req, res, next) => {
         return next(err);
       }
       console.log(postedMessages[0].user._id);
-      req.user ? console.log(req.user._id) : console.log("not logged in")
-      req.user ? console.log(req.user._id === postedMessages[0].user._id) : console.log("not logged in")
+      req.user ? console.log(req.user._id) : console.log("not logged in");
+      req.user
+        ? console.log(req.user._id === postedMessages[0].user._id)
+        : console.log("not logged in");
       res.render("index", { postedMessages, loggedIn, isMember });
     });
 };
@@ -96,3 +98,52 @@ exports.message_create_post = [
     }
   },
 ];
+
+// GET request to delete an item
+exports.message_delete_get = (req, res, next) => {
+  Message.findById(req.params.id)
+    .populate("user")
+    .exec((err, foundMessage) => {
+      if (err) {
+        return next(err);
+      }
+      if (foundMessage == null) {
+        req.flash(
+          "error",
+          "There was an error deleting the message, please try again later."
+        );
+        res.redirect("/");
+      } else {
+        res.render("message_delete", {
+          foundMessage: foundMessage,
+        });
+      }
+    });
+};
+
+// GET request to delete an item
+exports.message_delete_post = (req, res, next) => {
+  Message.findById(req.body.id)
+    .populate("user")
+    .exec((err, foundMessage) => {
+      if (err) {
+        return next(err);
+      }
+
+      if (String(foundMessage.user._id) !== String(req.user._id)) {
+        req.flash("error", "You are not authorized to delete this message");
+        res.redirect("/" + req.body.id);
+      } else {
+        Message.findByIdAndRemove(req.body.id, (err) => {
+          if (err) {
+            return next(err);
+          }
+          req.flash(
+            "info",
+            `You successfully deleted the post titled ${foundMessage.title}`
+          );
+          res.redirect("/");
+        });
+      }
+    });
+};

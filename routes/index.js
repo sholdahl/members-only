@@ -30,4 +30,10 @@ router.get("/post", auth.isAuth, auth.isMember, message_controller.message_creat
 // POST create a post
 router.post("/post", auth.isAuth, auth.isMember, message_controller.message_create_post);
 
+// GET delete a post
+router.get("/:id/delete", auth.isAuth, auth.isMember, message_controller.message_delete_get);
+
+// POSE delete a post
+router.post("/:id/delete", auth.isAuth, auth.isMember, message_controller.message_delete_post);
+
 module.exports = router;
