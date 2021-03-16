@@ -46,15 +46,11 @@ body {
   display: flex;
 }
 
-@media (max-width: 991px){
-  .user-greeting {
-    display: none;
-  }
-}
 
 .post-contatiner {
   max-width: 600px;
   margin: auto;
+  padding-bottom: 15px;
 }
 
 .post {
@@ -62,6 +58,15 @@ body {
   background: #DADED4;
   padding: 30px;
   border-radius: 5px;
+}
+
+@media (max-width: 991px){
+  .user-greeting {
+    display: none;
+  }
+  .post {
+    margin: 15px;
+  }
 }
 
 .hero-div {
