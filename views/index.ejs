@@ -9,7 +9,11 @@
 <div class="post-contatiner">
   <% if (messages.info) { %>
   <p class="info message"><%= messages.info %></p>
-  <% } %> <% postedMessages.forEach(post => { %>
+  <% } %> 
+  
+  <% if (postedMessages.length > 0) { %>
+
+  <% postedMessages.forEach(post => { %>
 
   <div class="post">
     <h2 class="post-title"><%= post.title %></h2>
@@ -31,5 +35,10 @@
   </div>
 
   <% }); %>
+  <% } else { %>
+
+  <h3 class="green message text-center">No one has posted yet. Become a member and be the first one to make a post!</h3>
+
+    <% } %>
 </div>
 <%- include('footer'); -%>

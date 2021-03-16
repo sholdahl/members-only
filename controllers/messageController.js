@@ -22,11 +22,6 @@ exports.index = (req, res, next) => {
       if (err) {
         return next(err);
       }
-      console.log(postedMessages[0].user._id);
-      req.user ? console.log(req.user._id) : console.log("not logged in");
-      req.user
-        ? console.log(req.user._id === postedMessages[0].user._id)
-        : console.log("not logged in");
       res.render("index", { postedMessages, loggedIn, isMember });
     });
 };

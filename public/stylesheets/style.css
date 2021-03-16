@@ -128,6 +128,10 @@ body {
 .error {
   color: indianred;
 }
+
+.green {
+  color: #39603D
+}
 /* 
 background: #E8CEBF
 primary accent: #226150
