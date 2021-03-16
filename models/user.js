@@ -7,6 +7,7 @@ let UserSchema = new Schema({
   lastName: { type: String, required: true, maxLength: 100 },
   email: { type: String, require: true, maxLength: 100},
   membershipStatus: {type: String, required: true, maxLength: 100},
+  isAdmin: {type: Boolean, required: false, default: false},
   password: {type: String},
 });
 

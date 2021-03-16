@@ -1,0 +1,27 @@
+<%- include('header') -%>
+<div class="hero-div">
+  <div>
+    <h1 class="text-center hero-title">Apply To Be a Admin</h1>
+    <h3 class="text-center hero-subtitle">Gain Access To Moderating Content</h3>
+  </div>
+</div>
+
+<div class="container-fluid ch-form-wrapper">
+  <% if (messages.error) { %>
+    <p class="error message"> <%= messages.error %> </p>
+   <% } %>
+  <form method="POST" action="/user/admin-application" class="ch-form">
+    <div class="mb-3">
+      <label for="secret-code" class="form-label">Secret Password</label>
+      <input
+        type="text"
+        class="form-control"
+        id="secret-code"
+        name="secret-code"
+        required="true"
+      />
+    </div>
+    <button type="submit" class="btn ch-btn">Submit</button>
+  </form>
+
+<%- include('footer') -%>

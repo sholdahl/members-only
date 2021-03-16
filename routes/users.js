@@ -16,4 +16,10 @@ router.get("/member-application", auth.isAuth, user_controller.member_applicatio
 // POST member applciation
 router.post("/member-application", auth.isAuth, user_controller.member_application_post);
 
+// GET admin application
+router.get("/admin-application", auth.isAuth, auth.isMember, user_controller.admin_application_get);
+
+// POST admin applciation
+router.post("/admin-application", auth.isAuth, auth.isMember, user_controller.admin_application_post);
+
 module.exports = router;

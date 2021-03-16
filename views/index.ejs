@@ -22,7 +22,7 @@
     </p>
 
     <p class="post-content"><%= post.message %></p>
-    <% if (locals.user) {%> <% if (String(user._id) === String(post.user._id)) {%>
+    <% if (locals.user) {%> <% if ((String(user._id) === String(post.user._id)) || user.isAdmin) {%>
 
     <a class="btn-link" href="/<%= post._id %>/delete">
       <button class="btn ch-btn delete-btn">Delete Post</button>

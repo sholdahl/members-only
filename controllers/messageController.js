@@ -99,7 +99,7 @@ exports.message_create_post = [
   },
 ];
 
-// GET request to delete an item
+// GET request to delete a message
 exports.message_delete_get = (req, res, next) => {
   Message.findById(req.params.id)
     .populate("user")
@@ -121,7 +121,7 @@ exports.message_delete_get = (req, res, next) => {
     });
 };
 
-// GET request to delete an item
+// POST request to delete a message
 exports.message_delete_post = (req, res, next) => {
   Message.findById(req.body.id)
     .populate("user")
@@ -130,10 +130,10 @@ exports.message_delete_post = (req, res, next) => {
         return next(err);
       }
 
-      if (String(foundMessage.user._id) !== String(req.user._id)) {
-        req.flash("error", "You are not authorized to delete this message");
-        res.redirect("/" + req.body.id);
-      } else {
+      if (
+        String(foundMessage.user._id) === String(req.user._id) ||
+        req.user.isAdmin
+      ) {
         Message.findByIdAndRemove(req.body.id, (err) => {
           if (err) {
             return next(err);
@@ -144,6 +144,9 @@ exports.message_delete_post = (req, res, next) => {
           );
           res.redirect("/");
         });
+      } else {
+        req.flash("error", "You are not authorized to delete this message");
+        res.redirect("/" + req.body.id + "/delete");
       }
     });
 };

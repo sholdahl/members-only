@@ -64,6 +64,7 @@ app.use((req, res, next) => {
       lastName: req.user.lastName,
       email: req.user.email,
       membershipStatus: req.user.membershipStatus,
+      isAdmin: req.user.isAdmin,
       _id: req.user._id
     };
     console.log("User Info: " + req.user);

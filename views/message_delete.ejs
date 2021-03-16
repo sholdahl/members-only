@@ -26,8 +26,8 @@
       </p>
       <input type="hidden" name="id" value="<%= foundMessage._id %>" />
       <p class="post-content"><%= foundMessage.message %></p>
-      <% if (locals.user) {%> <% if (String(user._id) ===
-      String(foundMessage.user._id)) {%>
+      <% if (locals.user) {%> <% if ((String(user._id) ===
+      String(foundMessage.user._id)) || user.isAdmin) {%>
 
       <button type="submit" class="btn ch-btn delete-btn">Delete Post</button>
       <% }} %>

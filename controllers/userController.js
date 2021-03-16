@@ -196,3 +196,46 @@ exports.member_application_post = [
     }
   },
 ];
+
+// GET request for admin application
+exports.admin_application_get = (req, res, next) => {
+  res.render("admin_application");
+};
+
+// POST request for admin application
+exports.admin_application_post = [
+  body("secret-code")
+    .trim()
+    .isLength({ min: 1, max: 100 })
+    .escape()
+    .withMessage("Must provide a secret code"),
+  (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      // There are errors.
+      res.render("admin_application", {
+        errors: errors.array(),
+      });
+    } else {
+      if (req.body["secret-code"] === "I am the captain now") {
+        User.findByIdAndUpdate(req.user._id, {
+          isAdmin: true,
+        }).exec((err, foundUser) => {
+          if (err) {
+            return next(err);
+          } else {
+            req.flash(
+              "info",
+              "Your request to become and admin has been approved. You are now have the ability to delete the messages of others. Use your power carefully!"
+            );
+            res.redirect("/");
+          }
+        });
+      } else {
+        req.flash("error", "Incorrect Password");
+        res.render("admin_application");
+      }
+    }
+  },
+];
